@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
             [
                 'id' => 1,
                 'title' => 'Post 1',
-                'news-content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, quam laboriosam quasi saepe ut atque doloribus, repellat tempore error quo consectetur eveniet, quos porro libero cum corrupti placeat enim ipsam!
+                'news_content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, quam laboriosam quasi saepe ut atque doloribus, repellat tempore error quo consectetur eveniet, quos porro libero cum corrupti placeat enim ipsam!
                 Nulla sapiente at exercitationem dignissimos fugit consequatur cum totam ad quos. Animi dolorum, magni quam eaque facere reiciendis doloribus ullam, amet commodi fuga, dolores officia mollitia pariatur earum et molestiae.
                 Saepe beatae sapiente distinctio dolorum neque placeat ut, corporis, aliquid, veniam cum dignissimos ea. Perspiciatis molestias rem sunt itaque delectus quae impedit minima, eos voluptatem nihil assumenda temporibus deleniti quisquam.
                 Dolorem aliquid porro doloremque iusto necessitatibus distinctio in, ipsum magnam aliquam ea possimus cumque unde molestias recusandae facere ipsam velit consequuntur ullam dicta repellendus provident odio non dolores nemo. Delectus.
@@ -42,7 +42,7 @@ class PostSeeder extends Seeder
             [
                 'id' => 2,
                 'title' => 'Post 2',
-                'news-content' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim delectus, autem a cum cupiditate eveniet repudiandae nostrum facilis reprehenderit placeat quod odio? Exercitationem, et quia error voluptatum aliquid iure quisquam.
+                'news_content' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim delectus, autem a cum cupiditate eveniet repudiandae nostrum facilis reprehenderit placeat quod odio? Exercitationem, et quia error voluptatum aliquid iure quisquam.
                 Ad mollitia ipsum rerum. Voluptate illo cumque magni fugiat. Quos velit illo doloremque, at in cum delectus. Natus voluptatibus aut modi, itaque impedit eveniet omnis repellat. Laborum harum minus quo?
                 Fuga minima magni, accusantium id omnis sit quaerat accusamus odit earum sunt pariatur! Similique dicta, id ut ipsum, deleniti officia magnam unde mollitia, perferendis voluptas itaque qui modi nemo cupiditate.
                 Dolorem ipsa voluptatem reiciendis dolore doloribus. Ut quia maiores dolor! Facilis saepe eos esse optio quaerat perferendis omnis autem blanditiis, odio, sunt voluptatum perspiciatis non nihil quasi architecto voluptatibus alias.
