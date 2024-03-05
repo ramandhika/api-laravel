@@ -21,13 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('posts/', [PostController::class, 'index']);
-    Route::get('posts/search/{id}', [PostController::class, 'show']);
+    Route::post('posts', [PostController::class, 'store']);
+    Route::get('logout', [AuthenticationController::class, 'logout']);
 });
 
 // // Route::apiResource('posts', PostController::class);
-// Route::get('posts/', [PostController::class, 'index'])->middleware(['auth:sanctum']);
-// Route::get('posts/search/{id}', [PostController::class, 'show']);
+Route::get('posts/', [PostController::class, 'index']);
+Route::get('posts/search/{id}', [PostController::class, 'show']);
 
 Route::post('login', [AuthenticationController::class, 'login']);
-Route::get('logout', [AuthenticationController::class, 'logout'])->middleware('auth:sanctum');
