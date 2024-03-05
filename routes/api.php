@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('posts', [PostController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('posts/', [PostController::class, 'index']);
+    Route::get('posts/search/{id}', [PostController::class, 'show']);
+});
 
-Route::apiResource('posts', PostController::class);
+// // Route::apiResource('posts', PostController::class);
+// Route::get('posts/', [PostController::class, 'index'])->middleware(['auth:sanctum']);
+// Route::get('posts/search/{id}', [PostController::class, 'show']);
+
+Route::post('login', [AuthenticationController::class, 'login']);
+Route::get('logout', [AuthenticationController::class, 'logout'])->middleware('auth:sanctum');
