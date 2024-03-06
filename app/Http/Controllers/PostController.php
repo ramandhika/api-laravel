@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         try {
             // Penggunaan With (Missing) ketika di metode untuk memanggil data
-            $posts = Post::with('writer:id,username')->get();//all();
+            $posts = Post::with(['writer:id,username', 'comments:id,post_id,user_id,comments_content'])->get();//all();
             $postsResource = PostDetailResource::collection($posts);//->loadMissing('writer:id,username'));
             return response()->json([
                 'status' => [
@@ -36,7 +36,7 @@ class PostController extends Controller
 
     public function show($id) {
         try {
-            $post = Post::with('writer:id,username,firstname')->findOrFail($id);
+            $post = Post::with(['writer:id,username', 'comments:id,post_id,user_id,comments_content'])->findOrFail($id);
             if ($post) {
                 $postResource = new PostDetailResource($post);
                 return response()->json([
