@@ -7,6 +7,7 @@ use App\Http\Resources\PostDetailResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -72,6 +73,23 @@ class PostController extends Controller
             'news_content' => 'required',
         ]);
 
+        if ($request->hasFile('image')) {
+            $validated = $request->validate([
+                'image' => 'mimes:jpg,jpeg,png|max:2048',
+            ]);
+            $image = $request->file('image');
+            $imagePath = $image->store('uploads/profile_picture', 'public');
+            $validated['image'] = $imagePath;
+        }
+
+        // if ($request->file) {
+        //     $fileName = $this->generateRandomString();
+        //     $extension = $request->file->extension();
+
+        //     Storage::putFileAs('public/photo_profile', $request->file, $fileName . '.' . $extension);
+        // }
+
+        // $request['image'] = $fileName . '.' . $extension;
         $request['author'] = Auth::user()->id;
         $post = Post::create($request->all());
         return new PostDetailResource($post->loadMissing('writer:id,username'));

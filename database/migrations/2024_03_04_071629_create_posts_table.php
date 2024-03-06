@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
+            $table->string('image')->nullable();
             $table->text('news_content');
             $table->unsignedBigInteger('author');
             $table->timestamps();
