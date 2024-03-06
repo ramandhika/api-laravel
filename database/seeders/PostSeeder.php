@@ -28,6 +28,15 @@ class PostSeeder extends Seeder
             ],
         ];
 
+        $faker = \Faker\Factory::create('id_ID');
+        for ($i = 0; $i < 10; $i++) {
+            $posts[] = [
+                'title' => $faker->sentence,
+                'news_content' => $faker->paragraph,
+                'author' => $faker->numberBetween(1, 3),
+            ];
+        }
+
         foreach ($posts as $post) {
             Post::create($post);
         }

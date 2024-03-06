@@ -40,6 +40,17 @@ class UserSeeder extends Seeder
             ],
         ];
 
+        $faker = \Faker\Factory::create('id_ID');
+        for ($i = 0; $i < 10; $i++) {
+            $users[] = [
+                'email' => $faker->unique()->safeEmail,
+                'username' => $faker->unique()->userName,
+                'password' => bcrypt('password'),
+                'firstname' => $faker->firstName,
+                'lastname' => $faker->lastName,
+            ];
+        }
+
         foreach ($users as $user) {
             User::create($user);
         }
