@@ -22,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('posts', [PostController::class, 'store']);
+    Route::patch('posts/update/{id}', [PostController::class, 'update'])->middleware('pemilikPost');
+    Route::delete('posts/delete/{id}', [PostController::class, 'destroy'])->middleware('pemilikPost');
     Route::get('logout', [AuthenticationController::class, 'logout']);
 });
 

@@ -13,8 +13,9 @@ class PostController extends Controller
     public function index()
     {
         try {
-            $posts = Post::all();
-            $postsResource = PostResource::collection($posts);
+            // Penggunaan With (Missing) ketika di metode untuk memanggil data
+            $posts = Post::with('writer:id,username')->get();//all();
+            $postsResource = PostDetailResource::collection($posts);//->loadMissing('writer:id,username'));
             return response()->json([
                 'status' => [
                     'code' => 200,
@@ -74,5 +75,29 @@ class PostController extends Controller
         $request['author'] = Auth::user()->id;
         $post = Post::create($request->all());
         return new PostDetailResource($post->loadMissing('writer:id,username'));
+    }
+
+    public function update(Request $request, $id ){
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'news_content' => 'required',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+
+        return new PostDetailResource($post->loadMissing('writer:id,username'));
+    }
+
+    public function destroy($id){
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return response()->json([
+            'status' => [
+                'code' => 200,
+                'message' => 'Success deleting the Post Data API'
+            ],
+            'data' => null,
+        ], 200);
     }
 }
